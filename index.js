@@ -11,16 +11,17 @@ app.use(cors());
 dotenv.config();
 
 const PORT = process.env.PORT || 7000;
-const MONGOURL = process.env.MONGO_URI;   // <-- FIXED HERE
+const MONGOURL = process.env.MONGO_URI;
 
 mongoose
   .connect(MONGOURL)
   .then(() => {
     console.log("DB connected successfully.");
     app.listen(PORT, () => {
-      console.log(`Server is running on port :${PORT} `);
+      console.log(`Server is running on port :${PORT}`);
     });
   })
   .catch((error) => console.log(error));
 
 app.use("/api", route);
+
